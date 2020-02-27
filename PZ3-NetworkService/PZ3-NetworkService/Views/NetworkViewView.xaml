@@ -1,0 +1,297 @@
+﻿<UserControl x:Class="PZ3_NetworkService.Views.NetworkViewView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PZ3_NetworkService.Views"
+             xmlns:viewModel="clr-namespace:PZ3_NetworkService.ViewModel"
+             xmlns:data="clr-namespace:PZ3_NetworkService.Model"
+             xmlns:interactivity="http://schemas.microsoft.com/expression/2010/interactivity"             
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="700">
+
+    <UserControl.DataContext>
+        <viewModel:NetworkViewViewModel/>
+    </UserControl.DataContext>
+    <ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+        <ScrollViewer Margin="19,0,10,0">
+                    <ListView x:Name="lvPumps" HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Auto"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding pomocna, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedPumpa}"  Width="100" Height="350">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" TextAlignment="Center" FontStyle="Italic" Width="81" />
+                            </StackPanel>
+                            <Image Source="{Binding Type.ImgSrc}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                        <interactivity:Interaction.Triggers>
+                            <interactivity:EventTrigger EventName="MouseLeftButtonUp">
+                                <interactivity:InvokeCommandAction Command="{Binding MouseLeftButtonUpCommand}"/>
+                            </interactivity:EventTrigger>
+                            <interactivity:EventTrigger EventName="SelectionChanged">
+                                <interactivity:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding ElementName=lvPumps}"/>
+                            </interactivity:EventTrigger>
+                        </interactivity:Interaction.Triggers>
+                    </ListView>     
+        </ScrollViewer>
+
+
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv1"  Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv1}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv1}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv2" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv2}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv2}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv3" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv3}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv3}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv4" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv4}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv4}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv5" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv5}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv5}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv6" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv6}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv6}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv7" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv7}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv7}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv8" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv8}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv8}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv9" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv9}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv9}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv10" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv10}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv10}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv11" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv11}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv11}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv12" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv12}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv12}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv13" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv13}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv13}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv14" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv14}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv14}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv15" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv15}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv15}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv16" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv16}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv16}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv17" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv17}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv17}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv18" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv18}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv18}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv19" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv19}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv19}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Canvas Name="canv20" Height="75" Width="107" Background="Gray" Margin="5" AllowDrop="True">
+                                <Button Content="X" Background="Transparent" FontWeight="Bold" FontSize="12" Foreground="CornflowerBlue" Canvas.Top="0" Canvas.Right="0" BorderThickness="0" Command="{Binding FreeCanv1Command}" CommandParameter="{Binding ElementName=canv20}"  Width="18"  Height="18" Cursor="Hand"/>
+                                <TextBlock Background="White" Width="120" Canvas.Left="0" Canvas.Bottom="0" Height="15" TextWrapping="Wrap" TextAlignment="Left" ><Run  Text="Available"/></TextBlock>
+
+                                <interactivity:Interaction.Triggers>
+                                    <interactivity:EventTrigger EventName="Drop">
+                                        <interactivity:InvokeCommandAction Command="{Binding DropCommand}" CommandParameter="{Binding ElementName=canv20}"/>
+                                    </interactivity:EventTrigger>
+                                </interactivity:Interaction.Triggers>
+                            </Canvas>
+                        </Border>
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+    </ScrollViewer>
+</UserControl>

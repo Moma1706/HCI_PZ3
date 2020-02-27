@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="PZ3_NetworkService.Views.HelpView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PZ3_NetworkService.Views"
+             xmlns:viewModel="clr-namespace:PZ3_NetworkService.ViewModel"
+             xmlns:data ="clr-namespace:PZ3_NetworkService.Model"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewModel:HelpViewModel/>
+    </UserControl.DataContext>
+
+    <StackPanel Orientation="Vertical">
+        <Grid Grid.Row="0">
+           <TextBlock Text="    ABOUT APPLICATION:" FontSize="20" FontStyle="Italic"/>
+            <TextBlock HorizontalAlignment="Left" Height="152" Margin="26,39,0,0" TextWrapping="Wrap" Text="        Virtually all large systems must treat the water; a fact that is tightly regulated by global, state and federal agencies, such as the World Health Organization (WHO) or the United States Environmental Protection Agency (EPA). Water treatment must occur before the product reaches the consumer and afterwards (when it is discharged again). Water purification usually occurs close to the final delivery points to reduce pumping costs and the chances of the water becoming contaminated after treatment.&#x0a;        A water supply system or water supply network is a system of engineered hydrologic and hydraulic components which provide water supply.&#x0a;        Like electric power lines, roads, and microwave radio networks, water systems may have a loop or branch network topology, or a combination of both. The piping networks are circular or rectangular. If any one section of water distribution main fails or needs repair, that section can be isolated without disrupting all users on the network." ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Width="739"/>
+            
+        </Grid>
+        <Grid Grid.Row="1" >
+            <StackPanel Orientation="Horizontal" Margin="0,0,10,-162">
+                <TextBlock Text="    TURN ON/OFF ToolTips:   " ToolTip="Enable and Disable all ToolTips in application." FontSize="20" FontStyle="Italic" Margin="0,10,0,196" />
+                <Button Content="ENABLE/DISABLE" Width="141" BorderBrush="{Binding Boja1}" ToolTipService.ShowOnDisabled="False" Command="{Binding IjednoIdrugo}" Margin="0,10,0,196"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal" Margin="0,-24,0,24">
+            <TextBlock Text="    RIGHTS: " FontSize="20" FontStyle="Italic" />
+                <TextBlock Text=" Copyright 2019 Marko Tatic. All rights reserved." Margin="0,6,0,0"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3">
+            <StackPanel Orientation="Vertical" Margin="0,-15,0,15">
+                <TextBlock Text="    SHORTCUTS:" FontSize="20" FontStyle="Italic"/>
+                <TextBlock Text=" F1              F2              F3              F4              F5              F6              BackSpace" ToolTip="List of avaliable shortcuts in application." Height="17" Margin="24,0,36,0"/>
+                <TextBlock Text="  |                 |                 |                 |                 |                 |                       |" ToolTip="List of avaliable shortcuts in application." Height="17" Margin="24,0,36,0"/>
+                <TextBlock Text="Home       N.View       N.Data      D.Chart        Report        Help          Delete object" ToolTip="List of avaliable shortcuts in application." Height="17" Margin="16,0,36,0"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="4">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="    CURRENT VERSION:" FontSize="20" FontStyle="Italic"/>
+                <TextBlock Text="  Verson 1.0.0." HorizontalAlignment="Center" VerticalAlignment="Center" Height="19" Margin="0,6,0,2" Width="80" />
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</UserControl>
